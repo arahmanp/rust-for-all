@@ -89,4 +89,4 @@ Then open `http://localhost:8080` and you're good.
 
 ## Content license
 
-All content in `book/` and `listings/` is from [The Rust Programming Language](https://doc.rust-lang.org/book/), © Steve Klabnik and Carol Nichols, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The site design and code are original work.
+All content in `book/` and `listings/` is from [The Rust Programming Language](https://doc.rust-lang.org/book/), © Steve Klabnik and Carol Nichols, licensed under the [MIT License](https://opensource.org/licenses/MIT). The site design and code are original work.
