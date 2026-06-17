@@ -1,0 +1,1208 @@
+/* ================================================================
+   RUST FOR ALL — CUSTOM STYLESHEET
+   Minimalist developer aesthetic · Sharp corners · Rust orange
+   ================================================================ */
+
+/* ── 1. FONT FACES ─────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/Inter-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/Inter-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/Inter-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/fonts/jetbrainsmono/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/fonts/jetbrainsmono/JetBrainsMono-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/fonts/jetbrainsmono/JetBrainsMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/fonts/jetbrainsmono/JetBrainsMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── 2. CSS CUSTOM PROPERTIES ──────────────────────────────────── */
+
+:root {
+  /* Brand */
+  --brand:        #D04D22;
+  --brand-hover:  #b53d17;
+  --brand-light:  rgba(208, 77, 34, 0.08);
+  --brand-border: rgba(208, 77, 34, 0.25);
+
+  /* Layout */
+  --navbar-height: 62px;
+
+  /* Typography */
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* Light theme surfaces */
+  --bg:           #ffffff;
+  --bg-secondary: #f6f8fa;
+  --bg-code:      #f0f2f5;
+  --surface:      #ffffff;
+  --border:       #d0d7de;
+  --border-muted: #eaeef2;
+
+  /* Light theme text */
+  --text:         #1a1f2e;
+  --text-secondary: #57606a;
+  --text-muted:   #8b949e;
+
+  /* Light theme navbar */
+  --navbar-bg:    rgba(255, 255, 255, 0.92);
+  --navbar-border: #eaeef2;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(27, 31, 36, 0.08);
+  --shadow-md: 0 4px 12px rgba(27, 31, 36, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg:           #0d1117;
+  --bg-secondary: #161b22;
+  --bg-code:      #1c2128;
+  --surface:      #1c2128;
+  --border:       #30363d;
+  --border-muted: #21262d;
+
+  --text:         #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted:   #6e7681;
+
+  --navbar-bg:    rgba(13, 17, 23, 0.92);
+  --navbar-border: #21262d;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ── 3. BASE RESETS ────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--navbar-height) + 1.5rem);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  background-color: var(--bg);
+  margin: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Override Bootstrap's default border-radius to keep sharp corners */
+.card,
+.accordion-item,
+.accordion-button,
+.btn,
+.badge,
+.alert {
+  border-radius: 0 !important;
+}
+
+/* ── 4. NAVBAR ─────────────────────────────────────────────────── */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  height: var(--navbar-height);
+  background: var(--navbar-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--navbar-border);
+  display: flex;
+  align-items: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.site-nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.brand:hover { color: var(--brand); }
+
+.brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--brand);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.brand:hover .brand-icon { background: var(--brand-hover); }
+
+.brand-name {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+.brand-accent { color: var(--brand); }
+
+/* Theme toggle button */
+.btn-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.btn-theme:hover {
+  background: var(--bg-secondary);
+  color: var(--brand);
+  border-color: var(--brand-border);
+}
+
+/* ── 5. HERO — HOMEPAGE ────────────────────────────────────────── */
+
+.hero-home {
+  padding: 6rem 0 5rem;
+  text-align: center;
+  background-color: var(--bg);
+  /* Subtle grid pattern — developer engineering aesthetic */
+  background-image:
+    linear-gradient(var(--border-muted) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-muted) 1px, transparent 1px);
+  background-size: 48px 48px;
+  position: relative;
+}
+
+.hero-home::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  border: 1px solid var(--brand-border);
+  padding: 0.3em 0.8em;
+  margin-bottom: 1.5rem;
+  background: var(--brand-light);
+}
+
+.hero-title {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.hero-title .text-brand { color: var(--brand); }
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-num {
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* ── 6. BUTTONS ────────────────────────────────────────────────── */
+
+.btn-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.5rem;
+  background: var(--brand);
+  color: #fff;
+  border: 2px solid var(--brand);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.4;
+}
+
+.btn-brand:hover {
+  background: var(--brand-hover);
+  border-color: var(--brand-hover);
+  color: #fff;
+}
+
+.btn-brand.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem;
+}
+
+.btn-outline-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.5rem;
+  background: transparent;
+  color: var(--brand);
+  border: 2px solid var(--brand-border);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.4;
+}
+
+.btn-outline-brand:hover {
+  background: var(--brand-light);
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.4;
+}
+
+.btn-ghost:hover {
+  background: var(--bg-secondary);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* ── 7. SECTION HEADERS ────────────────────────────────────────── */
+
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ── 8. CHAPTER CARDS (HOMEPAGE) ───────────────────────────────── */
+
+.chapters-section {
+  padding: 4rem 0 5rem;
+}
+
+.chapter-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.18s ease;
+  position: relative;
+}
+
+.chapter-card:hover {
+  border-left-color: var(--brand);
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-md);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.chapter-card:hover .card-num {
+  color: var(--brand);
+}
+
+.card-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.card-icon {
+  font-size: 1.25rem;
+  color: var(--brand);
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.chapter-card:hover .card-icon { opacity: 1; }
+
+.card-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+}
+
+.card-tagline {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.card-footer-row {
+  margin-top: 1.25rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--border-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-arrow {
+  font-size: 1rem;
+  color: var(--brand);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.chapter-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* ── 9. HERO — CHAPTER PAGE ────────────────────────────────────── */
+
+.hero-chapter {
+  padding: 3.5rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.chapter-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chapter-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--brand);
+}
+
+.chapter-hero-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.chapter-hero-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 640px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.chapter-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-muted);
+}
+
+.chapter-meta-item {
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.chapter-meta-item i { color: var(--brand); }
+
+/* ── 10. ACCORDION (CHAPTER PAGE) ──────────────────────────────── */
+
+.sections-area {
+  padding: 3rem 0 5rem;
+}
+
+.accordion {
+  border: 1px solid var(--border);
+}
+
+.accordion-item {
+  background: var(--surface) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.accordion-item:last-child {
+  border-bottom: none !important;
+}
+
+.accordion-button {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 1.1rem 1.5rem;
+  gap: 1rem;
+  box-shadow: none !important;
+  transition: background 0.15s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  background: var(--brand-light) !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.accordion-button:hover {
+  background: var(--bg-secondary) !important;
+}
+
+.accordion-button::after {
+  filter: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238b949e'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--brand);
+  background: var(--brand-light);
+  padding: 0.15em 0.5em;
+  border: 1px solid var(--brand-border);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.section-title { flex: 1; }
+
+.accordion-body {
+  background: var(--bg-secondary);
+  padding: 1.25rem 1.5rem 1.25rem 4rem;
+  border-top: none;
+}
+
+.section-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  line-height: 1.65;
+}
+
+/* ── 11. HERO — MATERIAL PAGE ──────────────────────────────────── */
+
+.material-topbar {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+/* ── 12. MATERIAL PAGE LAYOUT ──────────────────────────────────── */
+
+.material-layout {
+  padding: 2.5rem 0 4rem;
+}
+
+.material-content-col {
+  min-width: 0; /* allow text to wrap inside flex/grid */
+}
+
+/* ── 13. MARKDOWN CONTENT STYLES ───────────────────────────────── */
+
+.md-content {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.md-content h1,
+.md-content h2,
+.md-content h3,
+.md-content h4,
+.md-content h5,
+.md-content h6 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-top: 2.25rem;
+  margin-bottom: 0.875rem;
+  line-height: 1.25;
+  scroll-margin-top: calc(var(--navbar-height) + 1.5rem);
+}
+
+.md-content h1 { font-size: 1.9rem; border-bottom: 2px solid var(--brand); padding-bottom: 0.5rem; }
+.md-content h2 { font-size: 1.45rem; border-bottom: 1px solid var(--border-muted); padding-bottom: 0.375rem; }
+.md-content h3 { font-size: 1.15rem; }
+.md-content h4 { font-size: 1rem; }
+
+.md-content p {
+  margin-bottom: 1.1rem;
+}
+
+.md-content a {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-color: var(--brand-border);
+  text-underline-offset: 3px;
+}
+
+.md-content a:hover {
+  color: var(--brand-hover);
+  text-decoration-color: var(--brand-hover);
+}
+
+/* Inline code */
+.md-content :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  color: var(--brand);
+  background: var(--bg-code);
+  padding: 0.12em 0.4em;
+  border: 1px solid var(--border-muted);
+}
+
+/* Code blocks */
+.md-content pre {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-left: 3px solid var(--brand);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+.md-content pre code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #e6edf3;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* Blockquotes */
+.md-content blockquote {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--brand);
+  background: var(--brand-light);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.md-content blockquote p:last-child { margin-bottom: 0; }
+
+.md-content blockquote strong { color: var(--text); }
+
+/* Lists */
+.md-content ul,
+.md-content ol {
+  padding-left: 1.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.md-content li {
+  margin-bottom: 0.35rem;
+}
+
+.md-content li:last-child { margin-bottom: 0; }
+
+/* Tables */
+.md-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.md-content thead tr {
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--border);
+}
+
+.md-content th {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  color: var(--text);
+}
+
+.md-content td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border-muted);
+  vertical-align: top;
+}
+
+.md-content tr:last-child td { border-bottom: none; }
+
+.md-content tbody tr:hover { background: var(--bg-secondary); }
+
+/* Images */
+.md-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border: 1px solid var(--border);
+}
+
+/* Horizontal rule */
+.md-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* ── 14. TOC SIDEBAR ───────────────────────────────────────────── */
+
+.toc-col {
+  position: relative;
+}
+
+.toc-sticky {
+  position: sticky;
+  top: calc(var(--navbar-height) + 1.5rem);
+  max-height: calc(100vh - var(--navbar-height) - 3rem);
+  overflow-y: auto;
+}
+
+/* Hide default scrollbar on TOC, keep functionality */
+.toc-sticky::-webkit-scrollbar { width: 3px; }
+.toc-sticky::-webkit-scrollbar-track { background: transparent; }
+.toc-sticky::-webkit-scrollbar-thumb { background: var(--border); }
+
+.toc-heading {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.toc-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 0.875rem;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  display: block;
+}
+
+.toc-link {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.3rem 0 0.3rem 0.75rem;
+  border-left: 2px solid transparent;
+  line-height: 1.4;
+  transition: color 0.12s ease, border-color 0.12s ease;
+  word-break: break-word;
+}
+
+.toc-link:hover {
+  color: var(--text);
+  border-left-color: var(--border);
+}
+
+.toc-link.active {
+  color: var(--brand);
+  border-left-color: var(--brand);
+  font-weight: 600;
+}
+
+/* Indent h3 items */
+.toc-h3 .toc-link {
+  padding-left: 1.5rem;
+  font-size: 0.775rem;
+}
+
+/* ── 15. MATERIAL NAVIGATION BUTTONS ───────────────────────────── */
+
+.material-nav {
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+.material-nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.nav-prev-wrapper { justify-self: start; }
+.nav-btn-chapter  { justify-self: center; }
+.nav-next-wrapper { justify-self: end; }
+
+.nav-btn-prev,
+.nav-btn-next,
+.nav-btn-chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: var(--surface);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.nav-btn-prev:hover,
+.nav-btn-next:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--brand-light);
+}
+
+.nav-btn-chapter:hover {
+  border-color: var(--border);
+  color: var(--text);
+  background: var(--bg-secondary);
+}
+
+.nav-btn-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.nav-btn-title {
+  display: block;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.78rem;
+}
+
+/* ── 16. LOADING STATE ─────────────────────────────────────────── */
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  gap: 1rem;
+}
+
+.spinner-ring {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--border);
+  border-top-color: var(--brand);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-spinner p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* ── 17. FOOTER ────────────────────────────────────────────────── */
+
+.site-footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
+  text-align: center;
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.site-footer a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer a:hover { color: var(--brand); }
+
+/* ── 18. BACK TO TOP / BREADCRUMB ──────────────────────────────── */
+
+.breadcrumb-bar {
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--border-muted);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.breadcrumb-bar a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.breadcrumb-bar a:hover { color: var(--brand); }
+
+.breadcrumb-sep {
+  margin: 0 0.4rem;
+  color: var(--border);
+}
+
+/* ── 19. PRISM OVERRIDES ───────────────────────────────────────── */
+
+/* Override Prism's inline styles to use our code block design */
+pre[class*="language-"] {
+  background: #0d1117 !important;
+  border: 1px solid #30363d !important;
+  border-left: 3px solid var(--brand) !important;
+  border-radius: 0 !important;
+  margin: 1.25rem 0 !important;
+  padding: 1.25rem 1.5rem !important;
+}
+
+code[class*="language-"] {
+  font-family: var(--font-mono) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  background: none !important;
+  text-shadow: none !important;
+}
+
+/* Token colors optimized for our dark code bg */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata               { color: #6e7681; }
+.token.punctuation         { color: #8b949e; }
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted             { color: #ff7b72; }
+.token.boolean,
+.token.number              { color: #79c0ff; }
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted            { color: #a5d6ff; }
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string       { color: #d2a8ff; }
+.token.atrule,
+.token.attr-value,
+.token.keyword             { color: #ff9492; }
+.token.function,
+.token.class-name          { color: #d2a8ff; }
+.token.regex,
+.token.important,
+.token.variable            { color: #ffa657; }
+.token.important,
+.token.bold                { font-weight: bold; }
+.token.italic              { font-style: italic; }
+
+/* ── 20. RESPONSIVE ────────────────────────────────────────────── */
+
+@media (max-width: 991.98px) {
+  /* TOC moves above content on mobile */
+  .toc-col {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+
+  .toc-sticky {
+    position: static;
+    max-height: none;
+  }
+
+  .toc-list { display: none; }
+  .toc-col.expanded .toc-list { display: block; }
+
+  .toc-heading {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  .toc-heading::after {
+    content: '+';
+    font-size: 1rem;
+    color: var(--brand);
+    transition: transform 0.15s ease;
+  }
+
+  .toc-col.expanded .toc-heading::after { content: '−'; }
+
+  .material-nav-inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .nav-btn-chapter {
+    grid-column: 1 / -1;
+    justify-self: center;
+    order: -1;
+  }
+
+  .nav-btn-prev,
+  .nav-btn-next {
+    width: 100%;
+  }
+
+  .nav-btn-title { max-width: 120px; }
+}
+
+@media (max-width: 575.98px) {
+  .hero-home { padding: 4rem 0 3.5rem; }
+  .hero-stats { gap: 1.75rem; }
+  .stat-num { font-size: 1.4rem; }
+
+  .accordion-body { padding-left: 1.5rem; }
+
+  .material-nav-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .nav-btn-prev,
+  .nav-btn-next,
+  .nav-btn-chapter {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-btn-chapter { order: -1; }
+
+  .nav-btn-title { max-width: none; }
+}
+
+/* ── 21. ACCESSIBILITY ─────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* ── 22. SCROLLBAR (Webkit) ────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--border); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }

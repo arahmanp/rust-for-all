@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="meta-desc" name="description" content="Rust for All — Chapter overview">
+  <title id="page-title">Chapter — Rust for All</title>
+
+  <!-- Prevent FOUC -->
+  <script>
+    (function () {
+      var s = localStorage.getItem('rfa-theme');
+      var t = (s && s !== 'auto') ? s : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('data-bs-theme', t);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── NAVBAR ──────────────────────────────────────────────────── -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Rust for All — Home">
+        <span class="brand-icon" aria-hidden="true">R</span>
+        <span class="brand-name">Rust <span class="brand-accent">for All</span></span>
+      </a>
+      <button id="theme-toggle" class="btn-theme" title="Switch to dark mode" aria-label="Switch to dark mode">
+        <i class="bi bi-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── CHAPTER HERO ─────────────────────────────────────────────── -->
+  <section class="hero-chapter" aria-labelledby="chapter-title">
+    <div class="container">
+      <div class="chapter-eyebrow" id="chapter-eyebrow">Chapter</div>
+      <h1 class="chapter-hero-title" id="chapter-title">Loading…</h1>
+      <p class="chapter-hero-desc" id="chapter-desc"></p>
+      <div class="chapter-meta">
+        <div class="chapter-meta-item">
+          <i class="bi bi-list-ul" aria-hidden="true"></i>
+          <span id="chapter-lesson-count">— lessons</span>
+        </div>
+        <div class="chapter-meta-item">
+          <i class="bi bi-book" aria-hidden="true"></i>
+          <span>The Rust Programming Language</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTIONS ACCORDION ──────────────────────────────────────── -->
+  <section class="sections-area" aria-labelledby="sections-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="sections-heading">Lessons in this Chapter</h2>
+        <p>Click a lesson to see its description, then open it to start reading.</p>
+      </div>
+
+      <div id="sections-accordion" class="accordion" role="list">
+        <!-- Populated by chapter.js -->
+      </div>
+
+      <!-- Back to all chapters -->
+      <div class="mt-4 pt-2 border-top" style="border-color:var(--border-muted) !important;">
+        <a href="index.html" class="btn-ghost">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          All Chapters
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Content from
+        <a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener noreferrer">
+          The Rust Programming Language
+        </a>
+        — available under
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+          CC BY 4.0
+        </a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────────── -->
+  <script src="assets/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/chapter.js"></script>
+</body>
+</html>
