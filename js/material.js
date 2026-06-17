@@ -98,6 +98,9 @@ $(function () {
     .then(function (markdown) {
       var html = marked.parse(markdown);
 
+      // Fix raw HTML <img> src paths from markdown: img/ → ./book/img/
+      html = html.replace(/(src=")img\//g, '$1./book/img/');
+
       // Normalize language classes: console/sh → bash
       html = html.replace(/class="language-console"/g, 'class="language-bash"');
       html = html.replace(/class="language-sh"/g,      'class="language-bash"');
