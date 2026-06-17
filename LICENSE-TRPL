@@ -1,0 +1,9 @@
+The content in the `book/` and `listings/` directories is sourced from the official "The Rust Programming Language" book.
+
+Copyright (c) 2016-2026 Steve Klabnik, Carol Nichols, and Contributors to the Rust Project.
+
+This content is dual-licensed under the MIT License and the Apache License (Version 2.0). 
+
+You may obtain a copy of the licenses at:
+- MIT: https://opensource.org/licenses/MIT
+- Apache 2.0: https://www.apache.org/licenses/LICENSE-2.0
