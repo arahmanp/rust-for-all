@@ -221,6 +221,12 @@ body {
 
 .brand-accent { color: var(--brand); }
 
+.brand-logo {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
 /* Theme toggle button */
 .btn-theme {
   display: inline-flex;
