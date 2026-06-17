@@ -1,6 +1,10 @@
-# Rust for All
+<p align="center">
+  <img src="assets/logo/Rust for All.png" alt="Rust for All" width="200">
+</p>
 
-A reimagined learning experience for [The Rust Programming Language](https://doc.rust-lang.org/book/) (TRPL) — same content, way better vibes.
+<h1 align="center">Rust for All</h1>
+
+<p align="center" style="padding: 0 15%;">A reimagined learning experience for <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> (TRPL) — same content, way better vibes.</p>
 
 ---
 
